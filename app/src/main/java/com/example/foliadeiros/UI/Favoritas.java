@@ -1,5 +1,6 @@
 package com.example.foliadeiros.UI;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -62,7 +63,8 @@ public class Favoritas extends AppCompatActivity {
 
         api= RetrofitClient.getClient().create(UsuarioApiService.class);
 
-        usuarioId= getIntent().getIntExtra("usuarioId", -1);
+        SharedPreferences prefs= getSharedPreferences("MISPREFS", MODE_PRIVATE);
+        usuarioId= prefs.getInt("usuario_id", -1);
 
         cargarFavoritas();
     }

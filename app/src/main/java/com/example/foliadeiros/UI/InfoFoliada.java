@@ -45,7 +45,8 @@ public class InfoFoliada extends AppCompatActivity {
     private UsuarioApiService apiUsuario;
     private ImageButton fav;
     private boolean favorita= false;
-    int usuarioId;
+    private int usuarioId;
+    private SharedPreferences prefs;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -53,20 +54,7 @@ public class InfoFoliada extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id= item.getItemId();
 
-        if (id==R.id.fav){
-            Intent intent = new Intent(InfoFoliada.this, Favoritas.class);
-            startActivity(intent);
-            return true;
-        }else if (id==R.id.comp){
-            compartirFoliada();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +66,7 @@ public class InfoFoliada extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        SharedPreferences prefs= getSharedPreferences("MISPREFS", MODE_PRIVATE);
+        prefs= getSharedPreferences("MISPREFS", MODE_PRIVATE);
         usuarioId= prefs.getInt("usuario_id", -1);
 
         ImageButton bt_atras= (ImageButton) findViewById(R.id.bt_atras);
@@ -170,6 +158,20 @@ public class InfoFoliada extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id= item.getItemId();
+
+        if (id==R.id.fav){
+            Intent intent = new Intent(InfoFoliada.this, Favoritas.class);
+            startActivity(intent);
+            return true;
+        }else if (id==R.id.comp){
+            compartirFoliada();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
     private void esFavorita(){
         apiUsuario.getAllFav(usuarioId).enqueue(new Callback<List<Foliada>>() {
             @Override

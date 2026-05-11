@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -68,12 +69,14 @@ public class Provincias extends AppCompatActivity {
 
         });
 
+        TextView titulo= (TextView) findViewById(R.id.titulo);
         listView= findViewById(R.id.lista_provincias);
         api= RetrofitClient.getClient().create(ProvinciasApiService.class);
         cargarProvincias();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        titulo.setText("PROVINCIAS");
 
         EditText buscador= (EditText) findViewById(R.id.buscar);
         buscador.setOnClickListener(view -> {
@@ -89,10 +92,6 @@ public class Provincias extends AppCompatActivity {
             startActivity(intent);
         });
     }
-
-
-
-
     private void cargarProvincias(){
         api.getProvincias().enqueue(new Callback<List<Provincia>>() {
             @Override

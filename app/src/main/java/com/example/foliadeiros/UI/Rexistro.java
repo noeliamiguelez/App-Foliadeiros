@@ -97,7 +97,6 @@ public class Rexistro extends AppCompatActivity {
                     @Override
                     public void onFailure(Call<Usuario> call, Throwable t) {
                         Toast.makeText(Rexistro.this, "Error de conexión", Toast.LENGTH_SHORT).show();
-
                     }
                 });
 

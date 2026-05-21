@@ -23,13 +23,20 @@
         android:gravity="center" />
     </Toolbar>
 
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/toolbar"/>
+
     <Button
         android:id="@+id/bt_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#A30000"
-        android:layout_below="@+id/toolbar"
-        android:layout_marginTop="60dp"
+        android:layout_below="@+id/logo"
         android:layout_centerHorizontal="true"
         android:text="Iniciar Sesión" />
 

@@ -13,13 +13,21 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:background="#A30000"/>
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_below="@+id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/logo"/>
+
     <EditText
         android:id="@+id/buscar"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar"
+        android:layout_below="@+id/logo"
         android:background="@drawable/edittext_bg"
-        android:layout_marginTop="80dp"
         android:layout_centerHorizontal="true"
 
         android:hint="Buscar"

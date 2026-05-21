@@ -6,9 +6,12 @@
     android:background="#A30000">
 
     <ImageView
-        android:id="@+id/pulpo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:id="@+id/logo"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="130dp"/>
 
     <TextView
         android:layout_width="wrap_content"

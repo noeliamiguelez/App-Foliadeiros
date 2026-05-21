@@ -23,13 +23,21 @@
             android:gravity="center" />
     </Toolbar>
 
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:layout_below="@+id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/logo"
+        android:layout_marginTop="20dp"/>
+
     <TextView
         android:id="@+id/txt_nomUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nomde de usuario"
-        android:layout_below="@+id/toolbar"
-        android:layout_marginTop="80dp"
+        android:layout_below="@+id/logo"
         android:layout_marginLeft="60dp"
         android:fontFamily="@font/jeju_hallasan"/>
 

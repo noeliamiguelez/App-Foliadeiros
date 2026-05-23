@@ -53,4 +53,11 @@ public class FoliadaAdapter extends ArrayAdapter<Foliada> {
 
         return convertView;
     }
+
+    public void actualizarLista(List<Foliada> nuevaLista){
+        clear();
+        addAll(nuevaLista);
+        notifyDataSetChanged();
+    }
+
 }

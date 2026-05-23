@@ -1,60 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFF1D1"
-    tools:context=".UI.LogIn">
+    tools:context=".UI.buscadorFolaidas">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:background="#A30000">
-    <TextView
-        android:id="@+id/titulo"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="15dp"
-        android:textSize="50dp"
-        android:textColor="@color/white"
-        android:fontFamily="@font/jeju_hallasan"/>
+        <ImageButton
+            android:id="@+id/bt_atras"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/arrow_back"
+            android:scaleType="centerInside"
+            android:background="@android:color/transparent"/>
+        <TextView
+            android:id="@+id/titulo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:textSize="50dp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/jeju_hallasan"/>
     </androidx.appcompat.widget.Toolbar>
-
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="125dp"
-        android:layout_height="125dp"
-        android:layout_below="@+id/toolbar"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/logo"/>
 
     <EditText
         android:id="@+id/buscar"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/logo"
-        android:layout_centerHorizontal="true"
         android:background="@drawable/edittext_bg"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="20dp"
         android:hint="Buscar"
         android:fontFamily="@font/jeju_hallasan"
-        android:inputType="none"
-        android:focusable="false"
-        android:clickable="true"
-        android:cursorVisible="false"/>
+        android:inputType="text"/>
 
     <ListView
-        android:id="@+id/lista_provincias"
+        android:id="@+id/lista_foliadas"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginLeft="40dp"
         android:layout_marginHorizontal="40dp"
         android:layout_below="@+id/buscar"
         android:layout_marginTop="20dp"
         android:divider="#FFF1D1"
         android:dividerHeight="10dp"/>
-
 
 </RelativeLayout>

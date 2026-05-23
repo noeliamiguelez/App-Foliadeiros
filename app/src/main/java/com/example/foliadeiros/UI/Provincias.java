@@ -80,7 +80,8 @@ public class Provincias extends AppCompatActivity {
 
         EditText buscador= (EditText) findViewById(R.id.buscar);
         buscador.setOnClickListener(view -> {
-
+            Intent intent= new Intent(Provincias.this, buscadorFolaidas.class);
+            startActivity(intent);
         });
 
         listView.setOnItemClickListener((parent, view, position, id)->{

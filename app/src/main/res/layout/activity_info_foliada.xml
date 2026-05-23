@@ -44,14 +44,14 @@
         />
     <ImageButton
         android:id="@+id/bt_favorita"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_below="@+id/cartel"
         android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
         android:src="@drawable/fav"
         android:scaleType="fitCenter"
-        android:padding="30dp"
+        android:padding="5dp"
         android:background="@android:color/transparent"
         />
 

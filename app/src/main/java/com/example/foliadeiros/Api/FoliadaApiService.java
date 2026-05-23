@@ -29,7 +29,7 @@ public interface FoliadaApiService {
     @PUT("foliadas/{id}")
     Call<Foliada> update(@Path("id") int id, @Body Foliada foliada);
 
-    @DELETE("foliadas/{id}")
-    Call<Void> delete(@Path("id") int id);
+    @GET("foliadas/buscar/{nome}")
+    Call<List<Foliada>> buscarFoliadas(@Path("nome") String nome);
 
 }

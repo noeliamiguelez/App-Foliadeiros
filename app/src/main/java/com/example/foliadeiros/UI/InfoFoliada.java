@@ -1,5 +1,6 @@
 package com.example.foliadeiros.UI;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -8,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -101,21 +103,54 @@ public class InfoFoliada extends AppCompatActivity {
         TextView txt_grupo= (TextView) findViewById(R.id.grupos);
         TextView txt_descripcion= (TextView) findViewById(R.id.descripcion);
         TextView txt_ubi= (TextView) findViewById(R.id.ubicacion);
+        LinearLayout cardImagen = findViewById(R.id.cardCartel);
 
         apiFoliada.getById(foliadaId).enqueue(new Callback<Foliada>() {
             @Override
             public void onResponse(Call<Foliada> call, Response<Foliada> response) {
                 if (response.isSuccessful()&&response.body()!=null){
                     foliada= response.body();
+                    int provinciaId = foliada.getProvincia().getId();
 
+                    if (provinciaId == 1) {
+                        cardImagen.setBackgroundResource(R.drawable.fi_coruna_bg);
+                    } else if (provinciaId == 2) {
+                        cardImagen.setBackgroundResource(R.drawable.fi_lugo_bg);
+                    } else if (provinciaId == 3) {
+                        cardImagen.setBackgroundResource(R.drawable.fi_ourense_bg);
+                    } else if (provinciaId == 4) {
+                        cardImagen.setBackgroundResource(R.drawable.fi_pontevedra_bg);
+                    }
                     esFavorita();
 
                     titulo.setText(foliada.getNombre());
-                    if(foliada.getImaxe()!=null && !foliada.getImaxe().isEmpty()){
-                        String nombre = foliada.getImaxe().replace("images", "");
-                        String url = "http://10.0.2.2:8081/images/"+nombre;
-                        Glide.with(InfoFoliada.this).load(url).into(img_cartel);
-                    }else{
+                    if (foliada.getImaxe() != null && !foliada.getImaxe().isEmpty()) {
+                        String path = foliada.getImaxe();
+
+                        if (path.startsWith("/")) {
+                            path = path.substring(1);
+                        }
+                        String url = "http://10.0.2.2:8081/" + path;
+                        Glide.with(InfoFoliada.this)
+                                .load(url)
+                                .placeholder(R.drawable.image_not_found)
+                                .error(R.drawable.image_not_found)
+                                .into(img_cartel);
+
+                        img_cartel.setOnClickListener(view -> {
+                            Dialog dialog = new Dialog(InfoFoliada.this, android.R.style.Theme_Black_NoTitleBar_Fullscreen);
+                            dialog.setContentView(R.layout.dialog_image);
+
+                            ImageView img = dialog.findViewById(R.id.imgGrande);
+
+                            Glide.with(InfoFoliada.this).load(url).into(img);
+                            img.setOnClickListener(v1 -> dialog.dismiss());
+                            dialog.findViewById(R.id.rootDialog).setOnClickListener(v1 -> dialog.dismiss());
+
+                            dialog.show();
+                        });
+
+                    } else {
                         img_cartel.setImageResource(R.drawable.image_not_found);
                     }
                     if (foliada.getFecha()!=null && !foliada.getFecha().isEmpty()){
@@ -149,11 +184,9 @@ public class InfoFoliada extends AppCompatActivity {
                     }
                 }
             }
-
             @Override
             public void onFailure(Call<Foliada> call, Throwable t) {
                 Toast.makeText(InfoFoliada.this, "Error al cargar foliada", Toast.LENGTH_SHORT).show();
-
             }
         });
     }

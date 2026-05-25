@@ -33,20 +33,26 @@
             android:fontFamily="@font/jeju_hallasan"/>
     </androidx.appcompat.widget.Toolbar>
 
-    <ImageView
-        android:id="@+id/cartel"
-        android:layout_width="300dp"
-        android:layout_height="250dp"
-        android:adjustViewBounds="true"
+    <LinearLayout
+        android:id="@+id/cardCartel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"
-        />
+        android:layout_margin="16dp"
+        android:padding="0dp"
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/cartel"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="false"/>
+    </LinearLayout>
     <ImageButton
         android:id="@+id/bt_favorita"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/cartel"
+        android:layout_below="@+id/cardCartel"
         android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
         android:src="@drawable/fav"

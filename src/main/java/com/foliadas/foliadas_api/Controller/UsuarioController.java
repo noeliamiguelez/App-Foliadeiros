@@ -40,22 +40,13 @@ public class UsuarioController {
 
     @PostMapping("/create")
     public ResponseEntity<UsuarioDTO> create(@RequestBody UsuarioDTO usuarioDTO) {
-        return ResponseEntity.ok(usuarioService.create(usuarioDTO));
-    }
+        try {
+            UsuarioDTO usuario = usuarioService.create(usuarioDTO);
+            return ResponseEntity.ok(usuario);
 
-    // Mostrar formulario de crear usuario
-    @GetMapping("/nuevo")
-    public String mostrarFormularioUsuario(Model model) {
-        model.addAttribute("usuarioDTO", new UsuarioDTO());
-        return "usuarios/crear";
-    }
-
-    // Recibir formulario de creación
-    @PostMapping("/nuevo")
-    public String crearUsuario(@ModelAttribute UsuarioDTO usuarioDTO, Model model) {
-        usuarioService.create(usuarioDTO);
-        model.addAttribute("mensaje", "Usuario creado con éxito: " + usuarioDTO.getNombre());
-        return "usuarios/resultadoUsuario";
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        }
     }
 
     @DeleteMapping("/{id}")

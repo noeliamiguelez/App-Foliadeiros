@@ -69,4 +69,25 @@ class UsuarioServiceTest {
 			throw e;
 		}
 	}
+
+	@Test
+	void crearUsuarioConEmailExistente() {
+		try {
+			UsuarioDTO dto = new UsuarioDTO();
+			dto.setNombre("test");
+			dto.setEmail("test@gmail.com");
+			dto.setPassword("1234");
+
+			assertThrows(RuntimeException.class, () -> {
+				usuarioService.create(dto);
+			});
+
+			System.out.println("✔ PASSED: crearUsuarioConEmailExistente");
+
+		} catch (AssertionError e) {
+			System.out.println("✖ FAILED: crearUsuarioConEmailExistente");
+			throw e;
+		}
+	}
+
 }

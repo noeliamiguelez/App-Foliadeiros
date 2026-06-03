@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Foliadas</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1>Foliadas</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>Lugar</th>
+        <th>Descripcion</th>
+        <th>Latitude</th>
+        <th>Lonxitude</th>
+        <th>Imaxen</th>
+        <th>Provincia_id</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="foliada : ${foliadas}">
+        <td th:text="${foliada.id}"></td>
+        <td th:text="${foliada.nombre}"></td>
+        <td th:text="${foliada.fecha}"></td>
+        <td th:text="${foliada.hora}"></td>
+        <td th:text="${foliada.lugar}"></td>
+        <td th:text="${foliada.descripcion}"></td>
+        <td th:text="${foliada.latitude}"></td>
+        <td th:text="${foliada.lonxitude}"></td>
+        <td th:text="${foliada.imaxe}" width="150"></td>
+        <td th:text="${foliada.provincia.id}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nuevo Grupo</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f5f5f5;
+        }
+        .container {
+            width: 400px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+        label {
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0 20px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Nuevo Grupo</h2>
+
+    <form th:action="@{/grupos/guardar}" th:object="${grupo}" method="post">
+
+        <label>Nombre</label>
+        <input type="text" th:field="*{nombre}" />
+
+        <label>Tipo</label>
+        <input type="text" th:field="*{tipo}" />
+
+        <label>Orixen</label>
+        <input type="text" th:field="*{orixen}" />
+
+        <button type="submit">Guardar</button>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nueva Foliada</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f5f5f5;
+        }
+        .container {
+            width: 500px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0 20px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Nueva Foliada</h2>
+
+    <form th:action="@{/foliadas/guardar}" th:object="${foliada}" method="post" enctype="multipart/form-data">
+
+        <label>Nombre</label>
+        <input type="text" th:field="*{nombre}" />
+
+        <label>Fecha</label>
+        <input type="date" th:field="*{fecha}" />
+
+        <label>Hora</label>
+        <input type="time" th:field="*{hora}" />
+
+        <label>Lugar</label>
+        <input type="text" th:field="*{lugar}" />
+
+        <label>Descripción</label>
+        <textarea th:field="*{descripcion}"></textarea>
+
+        <label>Latitud</label>
+        <input type="number" step="any" th:field="*{latitude}" />
+
+        <label>Longitud</label>
+        <input type="number" step="any" th:field="*{lonxitude}" />
+
+        <label>Imagen</label>
+        <input type="file" name="imagen" />
+
+        <label>ID Provincia</label>
+        <input type="number" th:field="*{provincia.id}" />
+
+        <button type="submit">Guardar</button>
+    </form>
+</div>
+
+</body>
+</html>

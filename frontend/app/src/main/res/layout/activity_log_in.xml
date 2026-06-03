@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF1D1"
+    tools:context=".UI.LogIn">
+
+    <Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#A30000">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="INICIAR SESIÓN"
+            android:textColor="@color/white"
+            android:fontFamily="@font/jeju_hallasan"
+            android:textSize="40dp"
+            android:gravity="center" />
+    </Toolbar>
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/logo"
+        android:layout_centerHorizontal="true"/>
+
+    <EditText
+        android:id="@+id/mail"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logo"
+        android:background="@drawable/edittext_bg"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+
+        android:hint="Email"
+        android:fontFamily="@font/jeju_hallasan"
+        android:inputType="textEmailAddress"/>
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mail"
+        android:background="@drawable/edittext_bg"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+
+        android:hint="Contrasinal"
+        android:inputType="textPassword"/>
+
+    <Button
+        android:id="@+id/bt_nonConta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="#FFF1D1"
+        android:text="Inda non tes conta?"
+        android:fontFamily="@font/jeju_hallasan"
+        android:textColor="#A30000"/>
+
+    <Button
+        android:id="@+id/bt_acceder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bt_nonConta"
+        android:layout_centerHorizontal="true"
+        android:text="Acceder"
+        android:fontFamily="@font/jeju_hallasan"
+        android:backgroundTint="#A30000"/>
+
+
+</RelativeLayout>

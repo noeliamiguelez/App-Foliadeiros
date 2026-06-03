@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF1D1"
+    tools:context=".UI.Rexistro">
+
+    <Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#A30000">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="REXISTRO"
+            android:textColor="@color/white"
+            android:fontFamily="@font/jeju_hallasan"
+            android:textSize="40dp"
+            android:gravity="center" />
+    </Toolbar>
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:layout_below="@+id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/logo"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/txt_nomUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nomde de usuario"
+        android:layout_below="@+id/logo"
+        android:layout_marginLeft="60dp"
+        android:fontFamily="@font/jeju_hallasan"/>
+
+    <EditText
+        android:id="@+id/nome_usuario"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_nomUsuario"
+        android:background="@drawable/edittext_bg"
+        android:layout_centerHorizontal="true"
+
+        android:fontFamily="@font/jeju_hallasan"
+        android:inputType="text"/>
+
+    <TextView
+        android:id="@+id/txt_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Correo electrónico"
+        android:layout_below="@+id/nome_usuario"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="60dp"
+        android:fontFamily="@font/jeju_hallasan"/>
+
+    <EditText
+        android:id="@+id/mail"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_email"
+        android:background="@drawable/edittext_bg"
+        android:layout_centerHorizontal="true"
+
+        android:fontFamily="@font/jeju_hallasan"
+        android:inputType="textEmailAddress"/>
+
+    <TextView
+        android:id="@+id/txt_contrasinal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contrasinal"
+        android:layout_below="@+id/mail"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="60dp"
+        android:fontFamily="@font/jeju_hallasan"/>
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_contrasinal"
+        android:background="@drawable/edittext_bg"
+        android:layout_centerHorizontal="true"
+
+        android:inputType="textPassword"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/txt_contrasinal2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirmar contrasinal"
+        android:layout_below="@+id/password"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="60dp"
+        android:fontFamily="@font/jeju_hallasan"/>
+
+    <EditText
+        android:id="@+id/password2"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_contrasinal2"
+        android:background="@drawable/edittext_bg"
+        android:layout_centerHorizontal="true"
+
+        android:inputType="textPassword"
+        android:textColor="@color/black"/>
+
+    <Button
+        android:id="@+id/bt_siConta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/password2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="#FFF1D1"
+        android:text="Xa tes conta? Inicia sesión"
+        android:fontFamily="@font/jeju_hallasan"
+        android:textColor="#A30000"/>
+
+    <Button
+        android:id="@+id/bt_crearConta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bt_siConta"
+        android:layout_centerHorizontal="true"
+        android:text="Crear Conta"
+        android:fontFamily="@font/jeju_hallasan"
+        android:backgroundTint="#A30000"/>
+
+</RelativeLayout>

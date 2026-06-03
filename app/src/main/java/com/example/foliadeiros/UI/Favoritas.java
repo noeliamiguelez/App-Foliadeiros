@@ -1,5 +1,6 @@
 package com.example.foliadeiros.UI;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.ImageButton;
@@ -65,6 +66,14 @@ public class Favoritas extends AppCompatActivity {
 
         SharedPreferences prefs= getSharedPreferences("MISPREFS", MODE_PRIVATE);
         usuarioId= prefs.getInt("usuario_id", -1);
+
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            Foliada foliada = foliadas.get(position);
+
+            Intent intent = new Intent(Favoritas.this, InfoFoliada.class);
+            intent.putExtra("foliada_id", foliada.getId());
+            startActivity(intent);
+        });
 
         cargarFavoritas();
     }

@@ -54,55 +54,73 @@ public class Rexistro extends AppCompatActivity {
         });
 
         bt_registro.setOnClickListener(view -> {
-            EditText usuario= (EditText) findViewById(R.id.nome_usuario);
-            EditText mail= (EditText) findViewById(R.id.mail);
-            EditText contra= (EditText) findViewById(R.id.password);
-            EditText contra2= (EditText) findViewById(R.id.password2);
 
-            String nombre= usuario.getText().toString().trim();
-            String email= mail.getText().toString().trim();
-            String pas= contra.getText().toString().trim();
-            String pas2= contra2.getText().toString().trim();
+            EditText usuario = findViewById(R.id.nome_usuario);
+            EditText mail = findViewById(R.id.mail);
+            EditText contra = findViewById(R.id.password);
+            EditText contra2 = findViewById(R.id.password2);
 
+            String nombre = usuario.getText().toString().trim();
+            String email = mail.getText().toString().trim();
+            String pas = contra.getText().toString().trim();
+            String pas2 = contra2.getText().toString().trim();
 
-            if (!pas.equals(pas2)){
-                Toast.makeText(this, "As contrasinais non coindicen", Toast.LENGTH_SHORT).show();
+            if (nombre.isEmpty()) {
+                usuario.setError("Introduce un nome");
+                usuario.requestFocus();
                 return;
-            }else{
-
-                api= RetrofitClient.getClient().create(UsuarioApiService.class);
-                api.createUser(new Usuario(nombre, email, pas)).enqueue(new Callback<Usuario>() {
-                    @Override
-                    public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-                        if (response.isSuccessful()){
-                            Usuario usuario= response.body();
-
-                            SharedPreferences prefs= getSharedPreferences("MISPREFS", MODE_PRIVATE);
-                            SharedPreferences.Editor editor = prefs.edit();
-                            editor.putInt("usuario_id", usuario.getId());
-                            editor.apply();
-
-                            Toast.makeText(Rexistro.this, "Usuario creado", Toast.LENGTH_SHORT).show();
-                            Intent intent= new Intent(Rexistro.this, Provincias.class);
-                            startActivity(intent);
-                            finish();
-                        }else if(response.code()==409){
-                            mail.setError("El mail ya existe");
-                            mail.requestFocus();
-                        }else{
-                            Toast.makeText(Rexistro.this, "Error ao rexistrar", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<Usuario> call, Throwable t) {
-                        Toast.makeText(Rexistro.this, "Error de conexión", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-
-
             }
+            if (email.isEmpty()) {
+                mail.setError("Introduce un correo electrónico");
+                mail.requestFocus();
+                return;
+            }
+            if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                mail.setError("Correo electrónico non válido");
+                mail.requestFocus();
+                return;
+            }
+            if (pas.isEmpty()) {
+                contra.setError("Introduce un contrasinal");
+                contra.requestFocus();
+                return;
+            }
+            if (!pas.equals(pas2)) {
+                Toast.makeText(Rexistro.this, "As contrasinais non coinciden", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            api = RetrofitClient.getClient().create(UsuarioApiService.class);
+
+            api.createUser(new Usuario(nombre, email, pas)).enqueue(new Callback<Usuario>() {
+                @Override
+                public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+
+                    if (response.isSuccessful()) {
+                        Usuario usuario = response.body();
+
+                        SharedPreferences prefs = getSharedPreferences("MISPREFS", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = prefs.edit();
+                        editor.putInt("usuario_id", usuario.getId());
+                        editor.apply();
+                        Toast.makeText(Rexistro.this, "Usuario creado", Toast.LENGTH_SHORT).show();
+
+                        Intent intent = new Intent(Rexistro.this, Provincias.class);
+                        startActivity(intent);
+                        finish();
+
+                    } else if (response.code() == 409) {
+                        mail.setError("Ese correo xa está rexistrado");
+                        mail.requestFocus();
+                    } else {
+                        Toast.makeText(Rexistro.this, "Erro ao rexistrar", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                @Override
+                public void onFailure(Call<Usuario> call, Throwable t) {
+                    Toast.makeText(Rexistro.this, "Erro de conexión", Toast.LENGTH_SHORT).show();
+                }
+            });
         });
     }
 }
